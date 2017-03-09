@@ -6,4 +6,4 @@ RUN rm -f /etc/apt/sources.list /etc/apt/sources.list.d/*
 ADD file/sources.list /etc/apt/sources.list
 
 RUN set -x \
-    && apt-get clean && apt-get -y update
+    && apt-get clean && apt-get -y update && apt-get -y install vim
