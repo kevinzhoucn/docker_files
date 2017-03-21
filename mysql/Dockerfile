@@ -10,3 +10,11 @@ ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
 
 RUN apt-get -y install mysql-server
+RUN sed -i -e"s/^bind-address\s*=\s*127.0.0.1/bind-address = 0.0.0.0/" /etc/mysql/my.cnf
+
+ADD file/startup.sh /opt/startup.sh
+RUN chmod 755 /opt/startup.sh
+
+EXPOSE 3306
+
+CMD ["/bin/bash", "/opt/startup.sh"]
